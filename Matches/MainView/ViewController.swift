@@ -12,9 +12,9 @@ class ViewController: UIViewController {
 
     private let cellIdentifire = "cellID"
     
-    var ar1 = ["Спартак","Зенит"]
-    var arr2 = ["Барселона", "Реал"]
-    var arr3 = [">", "="]
+    var ar1 = ["Спартак","Зенит","ЦСК"]
+    var arr2 = ["Барселона", "Реал", "Порту"]
+    var arr3 = [">", "=", "<"]
     
     
     override func viewDidLoad() {
