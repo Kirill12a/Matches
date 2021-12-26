@@ -15,6 +15,9 @@
 		D21872192778D19C00ACEE83 /* Matches.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = D21872172778D19C00ACEE83 /* Matches.xcdatamodeld */; };
 		D218721B2778D19E00ACEE83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D218721A2778D19E00ACEE83 /* Assets.xcassets */; };
 		D218721E2778D19E00ACEE83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D218721C2778D19E00ACEE83 /* LaunchScreen.storyboard */; };
+		D2C3B4CB2778EFFC0060AAC2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3B4CA2778EFFC0060AAC2 /* Note.swift */; };
+		D2C3B4CE2778F19B0060AAC2 /* CellWithMatches.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2C3B4CD2778F19B0060AAC2 /* CellWithMatches.xib */; };
+		D2C3B4D02778F1C30060AAC2 /* CellWithMatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3B4CF2778F1C30060AAC2 /* CellWithMatches.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +33,9 @@
 		D218721A2778D19E00ACEE83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D218721D2778D19E00ACEE83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D218721F2778D19E00ACEE83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D2C3B4CA2778EFFC0060AAC2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
+		D2C3B4CD2778F19B0060AAC2 /* CellWithMatches.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellWithMatches.xib; sourceTree = "<group>"; };
+		D2C3B4CF2778F1C30060AAC2 /* CellWithMatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithMatches.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,14 +81,33 @@
 			children = (
 				D218720E2778D19C00ACEE83 /* AppDelegate.swift */,
 				D21872102778D19C00ACEE83 /* SceneDelegate.swift */,
-				D21872122778D19C00ACEE83 /* ViewController.swift */,
+				D2C3B4C92778E9F10060AAC2 /* MainView */,
 				D21872142778D19C00ACEE83 /* Main.storyboard */,
 				D218721A2778D19E00ACEE83 /* Assets.xcassets */,
 				D218721C2778D19E00ACEE83 /* LaunchScreen.storyboard */,
 				D218721F2778D19E00ACEE83 /* Info.plist */,
 				D21872172778D19C00ACEE83 /* Matches.xcdatamodeld */,
+				D2C3B4CA2778EFFC0060AAC2 /* Note.swift */,
 			);
 			path = Matches;
+			sourceTree = "<group>";
+		};
+		D2C3B4C92778E9F10060AAC2 /* MainView */ = {
+			isa = PBXGroup;
+			children = (
+				D21872122778D19C00ACEE83 /* ViewController.swift */,
+				D2C3B4CC2778F1590060AAC2 /* CellTableView&Xib */,
+			);
+			path = MainView;
+			sourceTree = "<group>";
+		};
+		D2C3B4CC2778F1590060AAC2 /* CellTableView&Xib */ = {
+			isa = PBXGroup;
+			children = (
+				D2C3B4CD2778F19B0060AAC2 /* CellWithMatches.xib */,
+				D2C3B4CF2778F1C30060AAC2 /* CellWithMatches.swift */,
+			);
+			path = "CellTableView&Xib";
 			sourceTree = "<group>";
 		};
 		E20D413142B00CD21C6B6CC1 /* Pods */ = {
@@ -91,7 +116,6 @@
 				79B9E3CDB0B4D9463D3EA074 /* Pods-Matches.debug.xcconfig */,
 				508AA07BF40732319B12DAAD /* Pods-Matches.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -156,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D218721E2778D19E00ACEE83 /* LaunchScreen.storyboard in Resources */,
+				D2C3B4CE2778F19B0060AAC2 /* CellWithMatches.xib in Resources */,
 				D218721B2778D19E00ACEE83 /* Assets.xcassets in Resources */,
 				D21872162778D19C00ACEE83 /* Main.storyboard in Resources */,
 			);
@@ -210,10 +235,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2C3B4CB2778EFFC0060AAC2 /* Note.swift in Sources */,
 				D21872132778D19C00ACEE83 /* ViewController.swift in Sources */,
 				D21872192778D19C00ACEE83 /* Matches.xcdatamodeld in Sources */,
 				D218720F2778D19C00ACEE83 /* AppDelegate.swift in Sources */,
 				D21872112778D19C00ACEE83 /* SceneDelegate.swift in Sources */,
+				D2C3B4D02778F1C30060AAC2 /* CellWithMatches.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
