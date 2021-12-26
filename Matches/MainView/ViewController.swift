@@ -25,11 +25,18 @@ class ViewController: UIViewController {
         
         view.backgroundColor = .white
         navigationItem.title = "Matches"
-        let barButton = navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: nil, action: nil)
+        let barButton = navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(transtionVC))
+    }
+    @objc func transtionVC(){
+        let rootVc = CreateViewController()
+
+        let navVC = UINavigationController(rootViewController: rootVc)
+        navVC.modalPresentationStyle = .fullScreen
+        present(navVC, animated: true, completion: nil)
     }
     
     private lazy var tableView: UITableView = {
-        let tableView = UITableView(frame: CGRect.zero, style: .grouped)
+        let tableView = UITableView(frame: CGRect.zero, style: .plain)
         
         return tableView
     }()

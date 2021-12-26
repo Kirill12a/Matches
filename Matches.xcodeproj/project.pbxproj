@@ -18,6 +18,7 @@
 		D2C3B4CB2778EFFC0060AAC2 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3B4CA2778EFFC0060AAC2 /* Note.swift */; };
 		D2C3B4CE2778F19B0060AAC2 /* CellWithMatches.xib in Resources */ = {isa = PBXBuildFile; fileRef = D2C3B4CD2778F19B0060AAC2 /* CellWithMatches.xib */; };
 		D2C3B4D02778F1C30060AAC2 /* CellWithMatches.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3B4CF2778F1C30060AAC2 /* CellWithMatches.swift */; };
+		D2C3B4D3277905F20060AAC2 /* CreateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C3B4D2277905F20060AAC2 /* CreateViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		D2C3B4CA2778EFFC0060AAC2 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		D2C3B4CD2778F19B0060AAC2 /* CellWithMatches.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellWithMatches.xib; sourceTree = "<group>"; };
 		D2C3B4CF2778F1C30060AAC2 /* CellWithMatches.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithMatches.swift; sourceTree = "<group>"; };
+		D2C3B4D2277905F20060AAC2 /* CreateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +83,7 @@
 			children = (
 				D218720E2778D19C00ACEE83 /* AppDelegate.swift */,
 				D21872102778D19C00ACEE83 /* SceneDelegate.swift */,
+				D2C3B4D1277905C80060AAC2 /* CreateMatches */,
 				D2C3B4C92778E9F10060AAC2 /* MainView */,
 				D21872142778D19C00ACEE83 /* Main.storyboard */,
 				D218721A2778D19E00ACEE83 /* Assets.xcassets */,
@@ -108,6 +111,14 @@
 				D2C3B4CF2778F1C30060AAC2 /* CellWithMatches.swift */,
 			);
 			path = "CellTableView&Xib";
+			sourceTree = "<group>";
+		};
+		D2C3B4D1277905C80060AAC2 /* CreateMatches */ = {
+			isa = PBXGroup;
+			children = (
+				D2C3B4D2277905F20060AAC2 /* CreateViewController.swift */,
+			);
+			path = CreateMatches;
 			sourceTree = "<group>";
 		};
 		E20D413142B00CD21C6B6CC1 /* Pods */ = {
@@ -237,6 +248,7 @@
 			files = (
 				D2C3B4CB2778EFFC0060AAC2 /* Note.swift in Sources */,
 				D21872132778D19C00ACEE83 /* ViewController.swift in Sources */,
+				D2C3B4D3277905F20060AAC2 /* CreateViewController.swift in Sources */,
 				D21872192778D19C00ACEE83 /* Matches.xcdatamodeld in Sources */,
 				D218720F2778D19C00ACEE83 /* AppDelegate.swift in Sources */,
 				D21872112778D19C00ACEE83 /* SceneDelegate.swift in Sources */,
