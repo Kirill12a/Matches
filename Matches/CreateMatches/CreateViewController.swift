@@ -37,10 +37,9 @@ class CreateViewController: UIViewController {
             make.left.equalToSuperview().inset(5)
             make.width.equalTo(view.bounds.width / 2 - 7) // дела првоерку на то как прыгает тф
 
-            
         }
-        
-        
+    
+
         let textFieldSecondTeam: UITextField = {
             let tf = UITextField()
             tf.placeholder = "Введите плиз"
@@ -57,10 +56,8 @@ class CreateViewController: UIViewController {
             make.right.equalToSuperview().inset(5)
 //            make.left.equalTo(textFieldFirstTeam).offset(5)
             make.width.equalTo(view.bounds.width / 2 - 7) // дела првоерку на то как прыгает тф
-
-            
-            
-            
+        
+    
             let winSegmented: UISegmentedControl = {
                var segmneted = UISegmentedControl(items: items)
                 segmneted.selectedSegmentIndex = 0
@@ -77,8 +74,6 @@ class CreateViewController: UIViewController {
                 make.centerX.equalToSuperview()
                 make.top.equalTo(textFieldFirstTeam.snp_bottomMargin).offset(20)
             }
-            
-            
             
             
             let infoAboutMatches: UITextView = {
@@ -98,8 +93,6 @@ class CreateViewController: UIViewController {
                 make.left.equalTo(50) // Странно, привязал в коде только к левому краю, а на деле к правому тоже привязалось
             }
             
-            
-            
             let saveDataAboutMatches: UIButton = {
                 let button = UIButton()
                 button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
@@ -118,15 +111,12 @@ class CreateViewController: UIViewController {
                 make.height.equalTo(60)
             }
             
-            
-            
         }
-        
         
     }
     
     @objc private func buttonTapped(){
-        print("Save data")
+        print("Save data about matches")
         dismiss(animated: true, completion: nil)
         
     }
