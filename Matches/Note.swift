@@ -11,7 +11,6 @@ import CoreData
 
 @objc(Note)
 class Note: NSManagedObject {
-    
     @NSManaged var teamOne: String!
     @NSManaged var teamTwo: String!
     @NSManaged var teamWin: String!
