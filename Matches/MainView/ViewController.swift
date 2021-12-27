@@ -26,13 +26,32 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         navigationItem.title = "Matches"
         let barButton = navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(transtionVC))
+        
     }
+    
+    
+    
+    
+    
+    
     @objc func transtionVC(){
         let rootVc = CreateViewController()
-
+        rootVc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(dismis))
+        rootVc.navigationItem.titleView?.backgroundColor = .white
+        rootVc.navigationItem.titleView?.tintColor = .white
+        
+        
+        
         let navVC = UINavigationController(rootViewController: rootVc)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true, completion: nil)
+        
+        
+        
+    }
+                                                                  
+    @objc private func dismis(){
+            dismiss(animated: true, completion: nil)
     }
     
     private lazy var tableView: UITableView = {
