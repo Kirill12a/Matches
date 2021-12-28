@@ -10,6 +10,7 @@ import SnapKit
 
 class CreateViewController: UIViewController {
     private let items = [">", "=", "<"]
+    var test = ""
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -23,10 +24,12 @@ class CreateViewController: UIViewController {
         
         let textFieldFirstTeam: UITextField = {
             let tf = UITextField()
-            tf.placeholder = "Введите плиз"
+            tf.placeholder = "Первая команда"
+            tf.textAlignment = .center
             tf.borderStyle = .line
-            
             tf.clipsToBounds = true
+            tf.layer.borderWidth = 2
+            tf.layer.cornerRadius = 15
             
            return tf
         }()
@@ -42,10 +45,13 @@ class CreateViewController: UIViewController {
 
         let textFieldSecondTeam: UITextField = {
             let tf = UITextField()
-            tf.placeholder = "Введите плиз"
+            tf.placeholder = "Вторая команда"
+            tf.textAlignment = .center
             tf.borderStyle = .line
             
             tf.clipsToBounds = true
+            tf.layer.borderWidth = 2
+            tf.layer.cornerRadius = 15
             
            return tf
         }()
@@ -59,10 +65,11 @@ class CreateViewController: UIViewController {
         
     
             let winSegmented: UISegmentedControl = {
-               var segmneted = UISegmentedControl(items: items)
+               let segmneted = UISegmentedControl(items: items)
                 segmneted.selectedSegmentIndex = 0
                 segmneted.tintColor = UIColor.black
                 segmneted.addTarget(self, action: #selector(self.filterApply), for: .valueChanged)
+                
                 return segmneted
             }()
             
@@ -77,11 +84,14 @@ class CreateViewController: UIViewController {
             
             
             let infoAboutMatches: UITextView = {
-               var textView = UITextView()
+               let textView = UITextView()
                 textView.contentInsetAdjustmentBehavior = .automatic
                 textView.textAlignment = .justified
                 textView.textColor = .blue
                 textView.backgroundColor = UIColor.lightGray
+                textView.font = UIFont.systemFont(ofSize: 20)
+                textView.layer.cornerRadius = 15
+            
                 return textView
             }()
             
@@ -97,9 +107,10 @@ class CreateViewController: UIViewController {
                 let button = UIButton()
                 button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
                 button.backgroundColor = .black
-                button.setTitle("SA", for: .normal)
-                button.tintColor = .red
+                button.setTitle("СОХРАНИТЬ", for: .normal)
+                button.layer.cornerRadius = 15
                 view.addSubview(button)
+                
                 return button
             }()
             
@@ -116,7 +127,7 @@ class CreateViewController: UIViewController {
     }
     
     @objc private func buttonTapped(){
-        print("Save data about matches")
+        print("Save data about matches: \(test)")
         dismiss(animated: true, completion: nil)
         
     }
@@ -124,11 +135,10 @@ class CreateViewController: UIViewController {
     
     @objc private func filterApply(segment: UISegmentedControl) -> Void {
         switch segment.selectedSegmentIndex {
-        case 1: break
-        case 2: break
-        case 3: break
+        case 0: print("0")
+        case 1: print("1")
+        case 2: print("2")
         default: break
-            
         }
     }
 

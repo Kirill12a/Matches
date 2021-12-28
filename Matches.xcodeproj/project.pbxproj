@@ -84,9 +84,8 @@
 				D2C3B4D4277A4BC60060AAC2 /* DelegateApp */,
 				D2C3B4D1277905C80060AAC2 /* CreateMatches */,
 				D2C3B4C92778E9F10060AAC2 /* MainView */,
-				D21872142778D19C00ACEE83 /* Main.storyboard */,
+				D2DCCE44277BA29C00F78416 /* ViewController(don't use)) */,
 				D218721A2778D19E00ACEE83 /* Assets.xcassets */,
-				D218721C2778D19E00ACEE83 /* LaunchScreen.storyboard */,
 				D218721F2778D19E00ACEE83 /* Info.plist */,
 				D21872172778D19C00ACEE83 /* Matches.xcdatamodeld */,
 				D2C3B4CA2778EFFC0060AAC2 /* Note.swift */,
@@ -127,6 +126,15 @@
 				D21872102778D19C00ACEE83 /* SceneDelegate.swift */,
 			);
 			path = DelegateApp;
+			sourceTree = "<group>";
+		};
+		D2DCCE44277BA29C00F78416 /* ViewController(don't use)) */ = {
+			isa = PBXGroup;
+			children = (
+				D21872142778D19C00ACEE83 /* Main.storyboard */,
+				D218721C2778D19E00ACEE83 /* LaunchScreen.storyboard */,
+			);
+			path = "ViewController(don't use))";
 			sourceTree = "<group>";
 		};
 		E20D413142B00CD21C6B6CC1 /* Pods */ = {
