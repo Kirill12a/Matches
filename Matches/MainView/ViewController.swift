@@ -30,7 +30,7 @@ class ViewController: UIViewController {
     
     @objc func transtionVC(){
         let rootVc = CreateViewController()
-        rootVc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(dismis))
+//        rootVc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(dismis))
         rootVc.navigationItem.titleView?.backgroundColor = .white
         rootVc.navigationItem.titleView?.tintColor = .white
         

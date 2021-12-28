@@ -16,20 +16,20 @@
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Зенит" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oat-GL-K1Y">
-                        <rect key="frame" x="21" y="9" width="59.5" height="21"/>
+                        <rect key="frame" x="21" y="9" width="65" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="fEH-s2-Pfd"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Спартак" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sP0-Kx-fyW">
-                        <rect key="frame" x="308.5" y="9" width="84.5" height="21"/>
+                        <rect key="frame" x="264" y="9" width="135" height="21"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="21" id="enE-xa-jr7"/>
                         </constraints>
-                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                        <fontDescription key="fontDescription" name="MuktaMahee-Bold" family="Mukta Mahee" pointSize="22"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
@@ -46,10 +46,10 @@
                     <constraint firstItem="sP0-Kx-fyW" firstAttribute="top" secondItem="U1y-fF-srF" secondAttribute="top" constant="9" id="A5b-wW-7kc"/>
                     <constraint firstAttribute="bottom" secondItem="oat-GL-K1Y" secondAttribute="bottom" constant="14" id="BWY-yE-0Vk"/>
                     <constraint firstAttribute="bottom" secondItem="sP0-Kx-fyW" secondAttribute="bottom" constant="14" id="D3K-Km-l01"/>
-                    <constraint firstItem="sP0-Kx-fyW" firstAttribute="leading" secondItem="AR0-SV-HLa" secondAttribute="trailing" constant="86" id="L8U-kE-C1r"/>
+                    <constraint firstItem="sP0-Kx-fyW" firstAttribute="leading" secondItem="AR0-SV-HLa" secondAttribute="trailing" multiplier="0.8" constant="86" id="L8U-kE-C1r"/>
                     <constraint firstItem="oat-GL-K1Y" firstAttribute="leading" secondItem="U1y-fF-srF" secondAttribute="leading" constant="21" id="OCy-VU-kgW"/>
                     <constraint firstItem="AR0-SV-HLa" firstAttribute="bottom" secondItem="oat-GL-K1Y" secondAttribute="bottom" constant="6" id="Q7y-Jb-iOA"/>
-                    <constraint firstAttribute="trailing" secondItem="sP0-Kx-fyW" secondAttribute="trailing" constant="21" id="Vmk-qj-NmM"/>
+                    <constraint firstAttribute="trailing" secondItem="sP0-Kx-fyW" secondAttribute="trailing" constant="15" id="Vmk-qj-NmM"/>
                     <constraint firstItem="sP0-Kx-fyW" firstAttribute="bottom" secondItem="AR0-SV-HLa" secondAttribute="bottom" constant="-6" id="eQp-zL-Mas"/>
                     <constraint firstItem="oat-GL-K1Y" firstAttribute="top" secondItem="U1y-fF-srF" secondAttribute="top" constant="9" id="kkF-Ju-luu"/>
                 </constraints>
