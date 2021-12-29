@@ -9,10 +9,10 @@ import UIKit
 import SnapKit
 import CoreData
 
-class CreateViewController: UIViewController {
-    private let items = [">", "=", "<"]
-    var test = ""
+class CreateViewController: UIViewController
+{
     
+    private let items = [">", "=", "<"]
     var selectedNote: Note? = nil
     
     //MARK: - Переменные
@@ -24,14 +24,13 @@ class CreateViewController: UIViewController {
     // -------------------------------- \\
     
     
-    var textFieldText: String?
-
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         view.backgroundColor = .white
         
-        
-        
+    
+        //MARK: - FirstTextField
         textFieldFirstTeam = UITextField()
         textFieldFirstTeam.placeholder = "Первая команда"
         textFieldFirstTeam.textAlignment = .center
@@ -39,50 +38,50 @@ class CreateViewController: UIViewController {
         textFieldFirstTeam.clipsToBounds = true
         textFieldFirstTeam.layer.borderWidth = 2
         textFieldFirstTeam.layer.cornerRadius = 15
-            
-         
-        textFieldText = textFieldFirstTeam.text
-       view.addSubview(textFieldFirstTeam)
-       textFieldFirstTeam.snp.makeConstraints { make in
-           make.top.equalTo(view.bounds.minY + 100)
-           make.left.equalToSuperview().inset(5)
-           make.width.equalTo(view.bounds.width / 2 - 7) // дела првоерку на то как прыгает тф
-       }
-        //------//
-           
-           textFieldSecondTeam = UITextField()
-           textFieldSecondTeam.placeholder = "Вторая команда"
-           textFieldSecondTeam.textAlignment = .center
-           textFieldSecondTeam.borderStyle = .line
-           
-           textFieldSecondTeam.clipsToBounds = true
-           textFieldSecondTeam.layer.borderWidth = 2
-           textFieldSecondTeam.layer.cornerRadius = 15
-           
-           view.addSubview(textFieldSecondTeam)
-           textFieldSecondTeam.snp.makeConstraints { make in
-               make.top.equalTo(view.bounds.minY + 100)
-               make.right.equalToSuperview().inset(5)
-   //            make.left.equalTo(textFieldFirstTeam).offset(5)
-               make.width.equalTo(view.bounds.width / 2 - 7) // дела првоерку на то как прыгает тф
-           }
         
-        //------//
-               
-               winSegmented = UISegmentedControl(items: items)
-               winSegmented.selectedSegmentIndex = 0
-               winSegmented.tintColor = UIColor.black
-               winSegmented.addTarget(self, action: #selector(self.filterApply), for: .valueChanged)
-               
-               view.addSubview(winSegmented)
-               winSegmented.snp.makeConstraints { make in
-                   make.right.left.equalToSuperview().inset(50)
-                   make.height.equalTo(50) // возможно пофиксить
-                   make.width.equalTo(view.bounds.width - 25)
-                   make.centerX.equalToSuperview()
-                   make.top.equalTo(textFieldFirstTeam.snp_bottomMargin).offset(20)
+        view.addSubview(textFieldFirstTeam)
+        textFieldFirstTeam.snp.makeConstraints { make in
+            make.top.equalTo(view.bounds.minY + 100)
+            make.left.equalToSuperview().inset(5)
+            make.width.equalTo(view.bounds.width / 2 - 7) // дела првоерку на то как прыгает тф
         }
         
+        
+        //MARK: - SecondTextField
+        textFieldSecondTeam = UITextField()
+        textFieldSecondTeam.placeholder = "Вторая команда"
+        textFieldSecondTeam.textAlignment = .center
+        textFieldSecondTeam.borderStyle = .line
+        
+        textFieldSecondTeam.clipsToBounds = true
+        textFieldSecondTeam.layer.borderWidth = 2
+        textFieldSecondTeam.layer.cornerRadius = 15
+        
+        view.addSubview(textFieldSecondTeam)
+        textFieldSecondTeam.snp.makeConstraints { make in
+            make.top.equalTo(view.bounds.minY + 100)
+            make.right.equalToSuperview().inset(5)
+            make.width.equalTo(view.bounds.width / 2 - 7) // дела првоерку на то как прыгает тф
+        }
+        
+        
+        //MARK: - SegmentedController
+        winSegmented = UISegmentedControl(items: items)
+        winSegmented.selectedSegmentIndex = 0
+        winSegmented.tintColor = UIColor.black
+        winSegmented.addTarget(self, action: #selector(self.filterApply), for: .valueChanged)
+        
+        view.addSubview(winSegmented)
+        winSegmented.snp.makeConstraints { make in
+            make.right.left.equalToSuperview().inset(50)
+            make.height.equalTo(50) // возможно пофиксить
+            make.width.equalTo(view.bounds.width - 25)
+            make.centerX.equalToSuperview()
+            make.top.equalTo(textFieldFirstTeam.snp_bottomMargin).offset(20)
+        }
+        
+        
+        //MARK: - TextView
         infoAboutMatches = UITextView()
         infoAboutMatches.contentInsetAdjustmentBehavior = .automatic
         infoAboutMatches.textAlignment = .justified
@@ -99,12 +98,14 @@ class CreateViewController: UIViewController {
             make.left.equalTo(50) // Странно, привязал в коде только к левому краю, а на деле к правому тоже привязалось
         }
         
+        
+        //MARK: - Button
         saveDataAboutMatches = UIButton()
         saveDataAboutMatches.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
         saveDataAboutMatches.backgroundColor = .black
         saveDataAboutMatches.setTitle("СОХРАНИТЬ", for: .normal)
         saveDataAboutMatches.layer.cornerRadius = 15
-
+        
         view.addSubview(saveDataAboutMatches)
         saveDataAboutMatches.snp.makeConstraints { make in
             make.top.equalTo(infoAboutMatches.snp_bottomMargin).offset(30)
@@ -116,12 +117,11 @@ class CreateViewController: UIViewController {
     }
     
     @objc private func buttonTapped(){
-        print("Save data about matches: \(textFieldFirstTeam.text)")
-        
-        
         let appDeleagate = UIApplication.shared.delegate as! AppDelegate
         let context: NSManagedObjectContext = appDeleagate.persistentContainer.viewContext
-        if selectedNote == nil {
+        
+        if selectedNote == nil
+        {
             let enity = NSEntityDescription.entity(forEntityName: "Note", in: context)
             let newNote = Note(entity: enity!, insertInto: context)
             newNote.id = noteList.count as NSNumber
@@ -129,16 +129,24 @@ class CreateViewController: UIViewController {
             newNote.teamTwo = textFieldSecondTeam.text
             newNote.teamWin = winSegmented.titleForSegment(at: winSegmented.selectedSegmentIndex)
             newNote.descriptionMatches = infoAboutMatches.text
-            do{
+            
+            do
+            {
                 try context.save()
                 noteList.append(newNote)
                 navigationController?.popViewController(animated: true)
-            }catch{
+            }
+            catch
+            {
                 print( "save error")
             }
-        }else{
+        }
+        else
+        {
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
-            do{
+            
+            do
+            {
                 let results: NSArray = try context.fetch(request) as NSArray
                 for result in results{
                     let note = result as! Note
@@ -149,35 +157,31 @@ class CreateViewController: UIViewController {
                         note.descriptionMatches = infoAboutMatches.text
                     }
                 }
-            }catch{
+            }
+            catch
+            {
                 print("Fetch Failed")
             }
         }
-        
-        
-        
-        
-        
-        
         dismiss(animated: true, completion: nil)
         
     }
     
-    @objc private func filterApply(segment: UISegmentedControl) -> Void {
-        switch segment.selectedSegmentIndex {
+    @objc private func filterApply(segment: UISegmentedControl) -> Void
+    {
+        switch segment.selectedSegmentIndex
+        {
         case 0: print("0")
         case 1: print("1")
         case 2: print("2")
         default: break
         }
     }
-     
-        
-    }
-    
-    
-    
-    
-    
+}
+
+
+
+
+
 
 
