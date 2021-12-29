@@ -11,7 +11,10 @@ import CoreData
 
 @objc(Note)
 class Note: NSManagedObject {
+    @NSManaged var id: NSNumber!
+    @NSManaged var deletedDate: Date?
     @NSManaged var teamOne: String!
     @NSManaged var teamTwo: String!
     @NSManaged var teamWin: String!
+    @NSManaged var descriptionMatches: String!
 }
