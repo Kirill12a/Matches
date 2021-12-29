@@ -17,6 +17,9 @@ class ViewController: UIViewController {
 
     private let cellIdentifire = "cellID"
     
+    var selectedNote: Note? = nil
+
+    
     var ar1 = ["Спартак","Зенит","ЦСК", "УФА"]
     var arr2 = ["Барселона", "Реал", "Порту", "Химки"]
     var arr3 = [">", "=", "<", "="]
@@ -36,7 +39,12 @@ class ViewController: UIViewController {
     }
     
     
-    
+    override func viewDidAppear(_ animated: Bool) {
+        DispatchQueue.main.async { [self] in
+            tableView.reloadData()
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,23 +112,12 @@ class ViewController: UIViewController {
 }
 
 
-
-
-
-extension ViewController: UITableViewDataSource {
+extension ViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        ar1.count
         nonDeletedNotes().count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = tableView.dequeueReusableCell(withIdentifier: cellIdentifire) as? CellWithMatches
-//        cell?.TeamOne.text = ar1[indexPath.row]
-//        cell?.TeamTwo.text = arr2[indexPath.row]
-//        cell?.ResultMatches.text = arr3[indexPath.row]
-//
-//        return cell!
-        
         let noteCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifire, for: indexPath) as! CellWithMatches
         let thisNote: Note!
         thisNote = nonDeletedNotes()[indexPath.row]
@@ -131,9 +128,37 @@ extension ViewController: UITableViewDataSource {
         return noteCell
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        tableView.reloadData()
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
     }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
+            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+            
+            let recordToDeleted = noteList[indexPath.row]
+            noteList.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+            context.delete(recordToDeleted)
+            do{
+                try context.save()
+                tableView.reloadData()
+            }catch{
+                print("Errror")
+            }
+            
+           }
+    }
+
+    
+    
+    
     
     
    
@@ -142,6 +167,3 @@ extension ViewController: UITableViewDataSource {
 }
 
 
-extension ViewController: UITableViewDelegate {
-
-}
