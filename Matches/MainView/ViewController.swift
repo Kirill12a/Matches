@@ -11,27 +11,19 @@ import CoreData
 
 var noteList = [Note]()
 
-
-class ViewController: UIViewController {
+class ViewController: UIViewController
+{
     var firstLoad = true
-
     private let cellIdentifire = "cellID"
     
-    var selectedNote: Note? = nil
-
     
-    var ar1 = ["Спартак","Зенит","ЦСК", "УФА"]
-    var arr2 = ["Барселона", "Реал", "Порту", "Химки"]
-    var arr3 = [">", "=", "<", "="]
-    
-  
-    
-    
-    
-    func nonDeletedNotes() ->[Note]{
+    func nonDeletedNotes() ->[Note]
+    {
         var noDeletedNoteList = [Note]()
-        for note in noteList{
-            if note.deletedDate == nil{
+        for note in noteList
+        {
+            if note.deletedDate == nil
+            {
                 noDeletedNoteList.append(note)
             }
         }
@@ -39,14 +31,16 @@ class ViewController: UIViewController {
     }
     
     
-    override func viewDidAppear(_ animated: Bool) {
+    override func viewDidAppear(_ animated: Bool)
+    {
         DispatchQueue.main.async { [self] in
             tableView.reloadData()
         }
         
     }
     
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "CellWithMatches", bundle: nil), forCellReuseIdentifier: cellIdentifire)
         setupView()
@@ -56,88 +50,99 @@ class ViewController: UIViewController {
         navigationItem.title = "Matches"
         let barButton = navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(transtionVC))
         
-        if firstLoad {
+        if firstLoad
+        {
             firstLoad = false
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
-            do {
+            let appDelegate                     =   UIApplication.shared.delegate as! AppDelegate
+            let context: NSManagedObjectContext =   appDelegate.persistentContainer.viewContext
+            let request                         =   NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+            do
+            {
                 let results: NSArray = try context.fetch(request) as NSArray
                 for result in results {
                     let note = result as! Note
                     noteList.append(note)
                 }
-            } catch {
+            }
+            catch
+            {
                 print("Fetch Failed")
             }
         }
     }
     
-    @objc func transtionVC(){
+    @objc func transtionVC()
+    {
         let rootVc = CreateViewController()
-//        rootVc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(dismis))
-        rootVc.navigationItem.titleView?.backgroundColor = .white
-        rootVc.navigationItem.titleView?.tintColor = .white
+        //        rootVc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(dismis))
+        rootVc.navigationItem.titleView?.backgroundColor    =   .white
+        rootVc.navigationItem.titleView?.tintColor          =   .white
         
         let navVC = UINavigationController(rootViewController: rootVc)
         navVC.modalPresentationStyle = .fullScreen
         present(navVC, animated: true, completion: nil)
-                
+        
     }
-                                                                  
-    @objc private func dismis(){
-            dismiss(animated: true, completion: nil)
+    
+    @objc private func dismis()
+    {
+        dismiss(animated: true, completion: nil)
     }
     
     private lazy var tableView: UITableView = {
         let tableView = UITableView(frame: CGRect.zero, style: .plain)
-        
         return tableView
     }()
     
-    
-    private func setupView(){
+    private func setupView()
+    {
         view.addSubview(tableView)
         tableView.delegate = self
         tableView.dataSource = self
     }
     
-    private func setupContraints(){
+    private func setupContraints()
+    {
         tableView.snp.makeConstraints { make in
             make.left.right.bottom.top.equalToSuperview().inset(0)
         }
     }
-
-
 }
 
 
-extension ViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+extension ViewController: UITableViewDataSource, UITableViewDelegate
+{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
         nonDeletedNotes().count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    {
         let noteCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifire, for: indexPath) as! CellWithMatches
         let thisNote: Note!
         thisNote = nonDeletedNotes()[indexPath.row]
-        noteCell.TeamOne.text = thisNote.teamOne
-        noteCell.TeamTwo.text = thisNote.teamTwo
-        noteCell.ResultMatches.text = thisNote.teamWin
+        noteCell.TeamOne.text           =   thisNote.teamOne
+        noteCell.TeamTwo.text           =   thisNote.teamTwo
+        noteCell.ResultMatches.text     =   thisNote.teamWin
         
         return noteCell
     }
     
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
+    {
         return .delete
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    {
         return true
     }
     
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath)
+    {
+        if editingStyle == .delete
+        {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
             let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
@@ -146,24 +151,17 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate {
             noteList.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
             context.delete(recordToDeleted)
-            do{
+            do
+            {
                 try context.save()
                 tableView.reloadData()
-            }catch{
+            }
+            catch
+            {
                 print("Errror")
             }
-            
-           }
+        }
     }
-
-    
-    
-    
-    
-    
-   
-    
-    
 }
 
 
