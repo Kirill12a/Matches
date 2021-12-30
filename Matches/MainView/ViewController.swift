@@ -53,9 +53,9 @@ class ViewController: UIViewController
         if firstLoad
         {
             firstLoad = false
-            let appDelegate                     =   UIApplication.shared.delegate as! AppDelegate
-            let context: NSManagedObjectContext =   appDelegate.persistentContainer.viewContext
-            let request                         =   NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+            let appDelegate                         =           UIApplication.shared.delegate as! AppDelegate
+            let context: NSManagedObjectContext     =           appDelegate.persistentContainer.viewContext
+            let request                             =           NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
             do
             {
                 let results: NSArray = try context.fetch(request) as NSArray
@@ -75,11 +75,11 @@ class ViewController: UIViewController
     {
         let rootVc = CreateViewController()
         //        rootVc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(dismis))
-        rootVc.navigationItem.titleView?.backgroundColor    =   .white
-        rootVc.navigationItem.titleView?.tintColor          =   .white
+        rootVc.navigationItem.titleView?.backgroundColor        =          .white
+        rootVc.navigationItem.titleView?.tintColor              =               .white
         
         let navVC = UINavigationController(rootViewController: rootVc)
-        navVC.modalPresentationStyle = .fullScreen
+        navVC.modalPresentationStyle        =        .fullScreen
         present(navVC, animated: true, completion: nil)
         
     }
@@ -119,12 +119,12 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        let noteCell = tableView.dequeueReusableCell(withIdentifier: cellIdentifire, for: indexPath) as! CellWithMatches
         let thisNote: Note!
-        thisNote = nonDeletedNotes()[indexPath.row]
-        noteCell.TeamOne.text           =   thisNote.teamOne
-        noteCell.TeamTwo.text           =   thisNote.teamTwo
-        noteCell.ResultMatches.text     =   thisNote.teamWin
+        let noteCell                    =       tableView.dequeueReusableCell(withIdentifier: cellIdentifire, for: indexPath) as! CellWithMatches
+        thisNote                        =       nonDeletedNotes()[indexPath.row]
+        noteCell.TeamOne.text           =       thisNote.teamOne
+        noteCell.TeamTwo.text           =       thisNote.teamTwo
+        noteCell.ResultMatches.text     =       thisNote.teamWin
         
         return noteCell
     }
