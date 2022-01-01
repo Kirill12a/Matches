@@ -74,7 +74,7 @@ class ViewController: UIViewController
     @objc func transtionVC()
     {
         let rootVc = CreateViewController()
-        rootVc.navigationItem.titleView?.backgroundColor        =          .white
+        rootVc.navigationItem.titleView?.backgroundColor        =               .white
         rootVc.navigationItem.titleView?.tintColor              =               .white
         
         let navVC = UINavigationController(rootViewController: rootVc)
@@ -111,23 +111,6 @@ class ViewController: UIViewController
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate
 {
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        var textInfo:String?
-        var dataDel:Date?
-        let thisNote: Note!
-        
-        thisNote                        =       nonDeletedNotes()[indexPath.row]
-        textInfo                        =       thisNote.descriptionMatches
-        dataDel = thisNote.deletedDate
-        guard let textInfo = textInfo else {return}
-
-        let alert = UIAlertController(title: "Ифнформация",
-                                      message: "\(textInfo)",
-                                      preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         nonDeletedNotes().count
@@ -143,6 +126,23 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate
         noteCell.ResultMatches.text     =       thisNote.teamWin
         
         return noteCell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+    {
+        var textInfo:String?
+        let thisNote: Note!
+        
+        thisNote                        =       nonDeletedNotes()[indexPath.row]
+        textInfo                        =       thisNote.descriptionMatches
+
+        guard let textInfo = textInfo else {return}
+
+        let alert = UIAlertController(title: "Ифнформация",
+                                      message: "\(textInfo)",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle
