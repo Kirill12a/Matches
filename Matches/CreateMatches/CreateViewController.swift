@@ -13,7 +13,7 @@ class CreateViewController: UIViewController
 {
     
     private let items = [">", "=", "<"]
-    var selectedNote: Note? = nil
+    private var selectedNote: Note? = nil
     
     //MARK: - Переменные
     var textFieldFirstTeam      :    UITextField!
@@ -69,7 +69,6 @@ class CreateViewController: UIViewController
         winSegmented = UISegmentedControl(items: items)
         winSegmented.selectedSegmentIndex = 0
         winSegmented.tintColor = UIColor.black
-        winSegmented.addTarget(self, action: #selector(self.filterApply), for: .valueChanged)
         
         view.addSubview(winSegmented)
         winSegmented.snp.makeConstraints { make in
@@ -166,17 +165,7 @@ class CreateViewController: UIViewController
         dismiss(animated: true, completion: nil)
         
     }
-    
-    @objc private func filterApply(segment: UISegmentedControl) -> Void
-    {
-        switch segment.selectedSegmentIndex
-        {
-        case 0: print("0")
-        case 1: print("1")
-        case 2: print("2")
-        default: break
-        }
-    }
+   
 }
 
 
