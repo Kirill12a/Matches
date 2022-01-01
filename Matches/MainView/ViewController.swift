@@ -74,7 +74,6 @@ class ViewController: UIViewController
     @objc func transtionVC()
     {
         let rootVc = CreateViewController()
-        //        rootVc.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Назад", style: .plain, target: self, action: #selector(dismis))
         rootVc.navigationItem.titleView?.backgroundColor        =          .white
         rootVc.navigationItem.titleView?.tintColor              =               .white
         
@@ -112,6 +111,23 @@ class ViewController: UIViewController
 
 extension ViewController: UITableViewDataSource, UITableViewDelegate
 {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        var textInfo:String?
+        var dataDel:Date?
+        let thisNote: Note!
+        
+        thisNote                        =       nonDeletedNotes()[indexPath.row]
+        textInfo                        =       thisNote.descriptionMatches
+        dataDel = thisNote.deletedDate
+        guard let textInfo = textInfo else {return}
+
+        let alert = UIAlertController(title: "Ифнформация",
+                                      message: "\(textInfo)",
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         nonDeletedNotes().count
