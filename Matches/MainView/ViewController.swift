@@ -30,12 +30,13 @@ class ViewController: UIViewController
         return noDeletedNoteList
     }
     
-    
+   
     override func viewDidAppear(_ animated: Bool)
     {
         DispatchQueue.main.async { [self] in
             tableView.reloadData()
         }
+        
         
     }
     
@@ -48,7 +49,7 @@ class ViewController: UIViewController
         
         view.backgroundColor = .white
         navigationItem.title = "Matches"
-        let barButton = navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(transtionVC))
+        _ = navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(transtionVC))
         
         if firstLoad
         {
@@ -150,7 +151,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate
         return .delete
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
+    private func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool
     {
         return true
     }
@@ -161,7 +162,7 @@ extension ViewController: UITableViewDataSource, UITableViewDelegate
         {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             let context: NSManagedObjectContext = appDelegate.persistentContainer.viewContext
-            let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
+            _ = NSFetchRequest<NSFetchRequestResult>(entityName: "Note")
             
             let recordToDeleted = noteList[indexPath.row]
             noteList.remove(at: indexPath.row)
